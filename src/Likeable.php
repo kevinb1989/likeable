@@ -47,7 +47,7 @@ trait Likeable
      */
     protected function liked(): Attribute
     {
-        return Attribute::make(get: function (mixed $value, array $attributes) {
+        return Attribute::make(get: function () {
             if ($this->relationLoaded('likes')) {
                 return $this->likes->contains(function (Like $like) {
                     return $like->user_id == auth()->id();
