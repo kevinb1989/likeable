@@ -4,10 +4,18 @@ declare(strict_types=1);
 
 namespace Likeable\Likeable;
 
-class Likeable
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
+
+/**
+ * @mixin Model
+ */
+trait Likeable
 {
     /**
      * The likes that belong to this object.
+     *
+     * @return MorphMany<Like, $this>
      */
     public function likes(): MorphMany
     {
@@ -20,7 +28,7 @@ class Likeable
      */
     public function getLikedAttribute(): bool
     {
-        return $this->likes->contains(function ($like) {
+        return $this->likes->contains(function (Like $like) {
             return $like->user_id == auth()->id();
         });
     }
@@ -36,10 +44,8 @@ class Likeable
     /**
      * Unlike this object.
      */
-    public function unlike(): Like
+    public function unlike(): void
     {
-        return tap($this->likes()->where(['user_id' => auth()->id()])
-            ->first())
-            ->delete();
+        $this->likes()->where('user_id', auth()->id())->delete();
     }
 }

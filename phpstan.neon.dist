@@ -3,4 +3,5 @@ parameters:
     paths:
         - src
         - database
+        - workbench
     tmpDir: build/phpstan
