@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Likeable\Likeable;
+namespace Kevinb1989\Likeable;
 
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Model;

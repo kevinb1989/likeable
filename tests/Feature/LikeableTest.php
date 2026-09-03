@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Likeable\Likeable\Like;
+use Kevinb1989\Likeable\Like;
 use Workbench\App\Models\Post;
 use Workbench\App\Models\User;
 

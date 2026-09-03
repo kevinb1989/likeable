@@ -32,12 +32,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Likeable\\Likeable\\": "src/"
+            "Kevinb1989\\Likeable\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Likeable\\Likeable\\Tests\\": "tests/",
+            "Kevinb1989\\Likeable\\Tests\\": "tests/",
             "Workbench\\App\\": "workbench/app/",
             "Workbench\\Database\\Factories\\": "workbench/database/factories/",
             "Workbench\\Database\\Seeders\\": "workbench/database/seeders/"
@@ -87,7 +87,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Likeable\\Likeable\\LikeableServiceProvider"
+                "Kevinb1989\\Likeable\\LikeableServiceProvider"
             ]
         }
     },

@@ -3,7 +3,7 @@
 namespace Workbench\App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Likeable\Likeable\Likeable;
+use Kevinb1989\Likeable\Likeable;
 
 class Post extends Model
 {
