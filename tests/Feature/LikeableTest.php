@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\DB;
 use Kevinb1989\Likeable\Like;
 use Workbench\App\Models\Post;
 use Workbench\App\Models\User;
@@ -40,4 +41,21 @@ it('reports liked as false for a guest', function () {
     $post = Post::create();
 
     expect($post->liked)->toBeFalse();
+});
+
+it('reads liked from an already eager loaded likes relation without querying', function () {
+    $user = User::factory()->create();
+    $post = Post::create();
+
+    $this->actingAs($user);
+    $post->like();
+
+    $post = Post::with('likes')->findOrFail($post->id);
+
+    DB::enableQueryLog();
+    $liked = $post->liked;
+    DB::disableQueryLog();
+
+    expect($liked)->toBeTrue()
+        ->and(DB::getQueryLog())->toBeEmpty();
 });

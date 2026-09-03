@@ -28,9 +28,13 @@ trait Likeable
      */
     public function getLikedAttribute(): bool
     {
-        return $this->likes->contains(function (Like $like) {
-            return $like->user_id == auth()->id();
-        });
+        if ($this->relationLoaded('likes')) {
+            return $this->likes->contains(function (Like $like) {
+                return $like->user_id == auth()->id();
+            });
+        }
+
+        return $this->likes()->where('user_id', auth()->id())->exists();
     }
 
     /**
