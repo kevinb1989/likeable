@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Kevinb1989\Likeable;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 
@@ -23,21 +24,6 @@ trait Likeable
     }
 
     /**
-     * Check whether the current object is liked by the currently
-     * authenticated user.
-     */
-    public function getLikedAttribute(): bool
-    {
-        if ($this->relationLoaded('likes')) {
-            return $this->likes->contains(function (Like $like) {
-                return $like->user_id == auth()->id();
-            });
-        }
-
-        return $this->likes()->where('user_id', auth()->id())->exists();
-    }
-
-    /**
      * Like this object.
      */
     public function like(): Like
@@ -51,5 +37,24 @@ trait Likeable
     public function unlike(): void
     {
         $this->likes()->where('user_id', auth()->id())->delete();
+    }
+
+    /**
+     * Check whether the current object is liked by the currently
+     * authenticated user.
+     *
+     * @return Attribute<bool, never>
+     */
+    protected function liked(): Attribute
+    {
+        return Attribute::make(get: function (mixed $value, array $attributes) {
+            if ($this->relationLoaded('likes')) {
+                return $this->likes->contains(function (Like $like) {
+                    return $like->user_id == auth()->id();
+                });
+            }
+
+            return $this->likes()->where('user_id', auth()->id())->exists();
+        });
     }
 }
