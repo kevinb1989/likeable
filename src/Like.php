@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Kevinb1989\Likeable;
 
-use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
@@ -18,9 +17,13 @@ use Illuminate\Support\Carbon;
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  */
-#[Fillable(['user_id'])]
 class Like extends Model
 {
+    /**
+     * @var list<string>
+     */
+    protected $fillable = ['user_id'];
+
     /**
      * Get the model that was liked.
      *
