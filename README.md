@@ -37,7 +37,19 @@ php artisan migrate
 
 ## Usage
 
-<!-- Add a basic usage example here. -->
+```php
+// An Eloquent model is liked by the authenticated user.
+$post->like();
+
+// An Eloquent model is unliked by the authenticated user.
+$post->unlike();
+
+// Get all likes of an Eloquent model.
+$post->likes();
+
+// Check if the Eloquent model is liked by the authenticated user.
+$post->liked;
+```
 
 ## Changelog
 
