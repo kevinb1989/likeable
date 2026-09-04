@@ -1,5 +1,9 @@
 # Release Notes
 
+## v0.2.1 - 2026-09-04
+
+- Update the `usage` section in the readme.md file.
+
 ## [Unreleased](https://github.com/kevinb1989/likeable/compare/Stop Using the Hidden and Fillable Attributes...HEAD)
 
 ## [Stop Using the Hidden and Fillable Attributes](https://github.com/kevinb1989/likeable/compare/0.1...Stop Using the Hidden and Fillable Attributes) - 2026-09-04
