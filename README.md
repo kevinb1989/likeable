@@ -10,7 +10,7 @@
     <a href="https://packagist.org/packages/kevinb1989/likeable"><img src="https://img.shields.io/packagist/dt/kevinb1989/likeable.svg?style=flat-square" alt="Total Downloads"></a>
 </p>
 
-Like an unlike Laravel eloquent models.
+Like and unlike Laravel eloquent models.
 
 ## Installation
 
