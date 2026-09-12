@@ -1,5 +1,10 @@
 # Release Notes
 
+## v0.3 - 2026-09-12
+
+- Cannot like an Eloquent model that has already been liked by the authenticated user.
+- Cannot unlike an Eloquent model that has not been liked by the authenticated user.
+
 ## v0.2.1 - 2026-09-04
 
 - Update the `usage` section in the readme.md file.
