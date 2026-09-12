@@ -28,6 +28,8 @@ trait Likeable
      */
     public function like(): Like
     {
+        throw_if($this->liked, new ModelAlreadyLikedException($this));
+
         return $this->likes()->create(['user_id' => auth()->id()]);
     }
 
@@ -36,6 +38,8 @@ trait Likeable
      */
     public function unlike(): void
     {
+        throw_unless($this->liked, new ModelNotYetLikedException($this));
+
         $this->likes()->where('user_id', auth()->id())->delete();
     }
 
